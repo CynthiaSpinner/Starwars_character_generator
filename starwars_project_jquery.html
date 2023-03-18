@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <style>
+        body {
+            padding: 35px;
+            background-color: black;
+        }
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+            color: whitesmoke;
+        }
+        button {
+            display: block;
+            text-align: center;
+            border: 1px solid rgb(241, 19, 19);
+            border-radius: 3px;
+            padding: 5px;
+            height: 30px;
+            width: auto;
+            margin: 50px auto;
+            background-color: rgb(248, 247, 245);
+        }
+        img {
+            width: 200px;
+            height: auto;
+            box-shadow: 5px 5px 5px whitesmoke;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <button>Generate Random Character</button> 
+    <h1 class="name"></h1>
+    <img src="" class="character-img" alt="">
+    
+    
+
+
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js">
+    </script>
+    <script>
+        
+        $(document).ready(function() {
+            $("button").on("click", function() {
+                const randomNumber = Math.ceil(Math.random() * 88)
+                $.get(`https://akabab.github.io/starwars-api/api/id/${randomNumber}.json`, function(data) {
+                    $("h1.name").text(data['name'])
+                    $(".character-img").attr("src", data['image'])
+                })
+            })
+        })
+     
+    </script>
+</body>
+</html>
